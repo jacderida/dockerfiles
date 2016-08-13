@@ -1,4 +1,4 @@
-FROM microsoft/azure-cli
+FROM microsoft/azure-cli:0.10.0
 
 MAINTAINER Chris O'Neil <chris.oneil@gmail.com>
 
