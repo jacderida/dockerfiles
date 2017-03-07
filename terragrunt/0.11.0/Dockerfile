@@ -7,7 +7,7 @@ ENV TERRAGRUNT_VERSION=0.11.0
 ENV NODE_VERSION=6.10.0
 
 RUN apt-get update && \
-    apt-get install -y wget xz-utils unzip && \
+    apt-get install -y git wget xz-utils unzip && \
     cd /tmp && \
     wget https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip && \
     unzip terraform_${TERRAFORM_VERSION}_linux_amd64.zip -d /usr/bin && \
