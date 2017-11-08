@@ -1,4 +1,4 @@
-FROM python:2.7
+FROM jacderida/zsh:python-2.7
 
 MAINTAINER Chris O'Neil <c.oneil@cgi.com>
 
@@ -10,11 +10,3 @@ RUN apt-get update && \
     rm -rf /tmp/* && \
     rm -rf /var/cache/apk/* && \
     rm -rf /var/tmp/*
-
-ENV HOME /home/user
-
-RUN useradd --create-home --home-dir $HOME user
-
-WORKDIR $HOME
-USER user
-CMD ["bash"]
