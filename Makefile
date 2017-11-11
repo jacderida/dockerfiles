@@ -1,9 +1,10 @@
 ANSIBLE_VERSION := 2.1.1.0
 AWSCLI_VERSION := 1.11.57
+TERRAGRUNT_VERSION := 0.11.0
 
 .PHONY: all zsh
 
-all: ansible
+all: ansible awscli terragrunt
 
 clean: clean-ansible clean-zsh-debian-jessie clean-zsh-python-2-7
 
@@ -27,3 +28,6 @@ ansible: zsh-debian-jessie
 
 awscli: zsh-python-2-7
 	cd ./awscli/${AWSCLI_VERSION} && docker build -t jacderida/awscli:${AWSCLI_VERSION} .
+
+terragrunt: zsh-debian-jessie
+	cd ./terragrunt/${TERRAGRUNT_VERSION} && docker build -t jacderida/terragrunt:${TERRAGRUNT_VERSION} .
