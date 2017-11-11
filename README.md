@@ -11,6 +11,7 @@ Drawbacks:
 
 * Containers use a lot more disk space than installing the applications natively (this can be mitigated to an extent with minimal operating systems like Alpine)
 * Dockerfile maintenance can be clunky (especially since Docker doesn't have a multiple inheritance system)
+* Docker itself introduces some complexity where there otherwise wouldn't be
 
 ## ZSH Base Containers
 
