@@ -6,7 +6,7 @@ TERRAGRUNT_VERSION := 0.11.0
 
 all: ansible awscli terragrunt
 
-clean: clean-ansible clean-zsh-debian-jessie clean-zsh-python-2-7
+clean: clean-terragrunt clean-ansible clean-zsh-debian-jessie clean-zsh-python-2-7
 
 clean-zsh-debian-jessie:
 	docker rmi jacderida/zsh:debian-jessie
@@ -16,6 +16,9 @@ clean-zsh-python-2-7:
 
 clean-ansible:
 	docker rmi jacderida/ansible:${ANSIBLE_VERSION}
+
+clean-terragrunt:
+	docker rmi jacderida/terragrunt:${TERRAGRUNT_VERSION}
 
 zsh-debian-jessie:
 	cd ./zsh/debian-jessie && docker build -t jacderida/zsh:debian-jessie .
