@@ -10,11 +10,11 @@ Where I have the choice, rather than running applications natively, I've decided
 Drawbacks:
 
 * Containers use a lot more disk space than installing the applications natively (this can be mitigated to an extent with minimal operating systems like Alpine)
-* Dockerfile maintenance can be clunky (especially since there Docker doesn't have a good multiple inheritance system)
+* Dockerfile maintenance can be clunky (especially since Docker doesn't have a multiple inheritance system)
 
 ## ZSH Base Containers
 
-To simplify Dockerfile development, these containers are intended to be run in interactive mode. For that reason, I like to maintain the shell prompt from my base machine, so my system is to use base containers that install ZSH and UTF-8 locales. I can then mount in my zshrc and the `oh-my-zsh` directory when running the container. Due to a lack of a good multiple inheritance system in Docker, there's a lot of duplication in the Dockerfiles, but I've decided to accept this limitation. The reality is the container definitions don't get updated that much.
+To simplify Dockerfile development, these containers are intended to be run in interactive mode. For that reason, I like to maintain the shell prompt from my host machine, so my system is to use base containers that install ZSH and UTF-8 locales. When running the container, I can mount in my zshrc and the `oh-my-zsh` directory. Due to a lack of a multiple inheritance system in Docker, there's a lot of duplication in the Dockerfiles, but I've decided to accept this limitation. The reality is the container definitions don't get updated that much.
 
 ## Build
 
@@ -40,6 +40,6 @@ The following table lists the images and their versions:
 | ----------------------------- | -------------- | ------------------- |
 | Ansible                       | 2.1.1.0        | ZSH Debian Jessie   |
 | AWS CLI                       | 1.11.57        | ZSH Python 2.7      |
-| Azure CLI                     | 1.11.57        | Microsoft Azure CLI |
+| Azure CLI                     | 0.10.6         | Microsoft Azure CLI |
 | Openshift Origin Client Tools | 1.2.1          | ZSH CentOS          |
 | Terragrunt                    | 0.11.0         | ZSH Debian Jessie   |
