@@ -1,21 +1,26 @@
 ANSIBLE_VERSION := 2.1.1.0
 AWSCLI_VERSION := 1.11.57
 TERRAGRUNT_VERSION := 0.11.0
+AZURE_VERSION := 0.10.6
 
-.PHONY: all zsh
+.PHONY: all azure-cli zsh-debian-jessie zsh-python-2-7
 
-all: ansible awscli terragrunt
+all: azure-cli ansible awscli terragrunt
 
-clean: clean-terragrunt clean-ansible clean-zsh-debian-jessie clean-zsh-python-2-7
+clean: clean-terragrunt clean-ansible clean-azure clean-awscli clean-zsh-debian-jessie clean-zsh-python-2-7
 
 clean-zsh-debian-jessie:
 	docker rmi jacderida/zsh:debian-jessie
 
 clean-zsh-python-2-7:
-	docker rmi jacderida/zsh:debian-jessie
+	docker rmi jacderida/zsh:python-2.7
 
 clean-ansible:
 	docker rmi jacderida/ansible:${ANSIBLE_VERSION}
+
+clean-azure:
+	docker rmi microsoft/azure-cli:${AZURE_VERSION}
+	docker rmi jacderida/azure-cli:${AZURE_VERSION}
 
 clean-terragrunt:
 	docker rmi jacderida/terragrunt:${TERRAGRUNT_VERSION}
@@ -31,6 +36,9 @@ ansible: zsh-debian-jessie
 
 awscli: zsh-python-2-7
 	cd ./awscli/${AWSCLI_VERSION} && docker build -t jacderida/awscli:${AWSCLI_VERSION} .
+
+azure-cli:
+	cd ./azure-cli/${AZURE_VERSION} && docker build -t jacderida/azure-cli:${AZURE_VERSION} .
 
 terragrunt: zsh-debian-jessie
 	cd ./terragrunt/${TERRAGRUNT_VERSION} && docker build -t jacderida/terragrunt:${TERRAGRUNT_VERSION} .
