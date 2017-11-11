@@ -10,6 +10,12 @@ all: azure-cli ansible awscli openshift-origin-cli terragrunt
 
 clean: clean-terragrunt clean-ansible clean-azure clean-awscli clean-openshift-origin clean-zsh-centos clean-zsh-debian-jessie clean-zsh-python-2-7
 
+clean-base-images:
+	docker rmi -f microsoft/azure-cli:${AZURE_VERSION}
+	docker rmi -f python:2.7
+	docker rmi -f debian:jessie
+	docker rmi -f centos
+
 clean-zsh-debian-jessie:
 	docker rmi -f jacderida/zsh:debian-jessie
 
@@ -27,7 +33,6 @@ clean-awscli:
 
 clean-azure:
 	docker rmi -f jacderida/azure-cli:${AZURE_VERSION}
-	docker rmi -f microsoft/azure-cli:${AZURE_VERSION}
 
 clean-openshift-origin:
 	docker rmi -f jacderida/openshift-origin-client-tools:${OPENSHIFT_ORIGIN_VERSION}
