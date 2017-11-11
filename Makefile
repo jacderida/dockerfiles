@@ -11,26 +11,29 @@ all: azure-cli ansible awscli openshift-origin-cli terragrunt
 clean: clean-terragrunt clean-ansible clean-azure clean-awscli clean-openshift-origin clean-zsh-centos clean-zsh-debian-jessie clean-zsh-python-2-7
 
 clean-zsh-debian-jessie:
-	docker rmi jacderida/zsh:debian-jessie
+	docker rmi -f jacderida/zsh:debian-jessie
 
 clean-zsh-python-2-7:
-	docker rmi jacderida/zsh:python-2.7
+	docker rmi -f jacderida/zsh:python-2.7
 
 clean-zsh-centos:
-	docker rmi jacderida/zsh:centos
+	docker rmi -f jacderida/zsh:centos
 
 clean-ansible:
-	docker rmi jacderida/ansible:${ANSIBLE_VERSION}
+	docker rmi -f jacderida/ansible:${ANSIBLE_VERSION}
+
+clean-awscli:
+	docker rmi -f jacderida/awscli:${AWSCLI_VERSION}
 
 clean-azure:
-	docker rmi jacderida/azure-cli:${AZURE_VERSION}
-	docker rmi microsoft/azure-cli:${AZURE_VERSION}
+	docker rmi -f jacderida/azure-cli:${AZURE_VERSION}
+	docker rmi -f microsoft/azure-cli:${AZURE_VERSION}
 
 clean-openshift-origin:
-	docker rmi jacderida/openshift-origin-client-tools:${OPENSHIFT_ORIGIN_VERSION}
+	docker rmi -f jacderida/openshift-origin-client-tools:${OPENSHIFT_ORIGIN_VERSION}
 
 clean-terragrunt:
-	docker rmi jacderida/terragrunt:${TERRAGRUNT_VERSION}
+	docker rmi -f jacderida/terragrunt:${TERRAGRUNT_VERSION}
 
 zsh-debian-jessie:
 	cd ./zsh/debian-jessie && docker build -t jacderida/zsh:debian-jessie .
