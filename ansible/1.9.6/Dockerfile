@@ -1,4 +1,4 @@
-FROM jacderida/zsh:latest
+FROM jacderida/zsh:debian-jessie
 
 MAINTAINER Chris O'Neil <c.oneil@cgi.com>
 
